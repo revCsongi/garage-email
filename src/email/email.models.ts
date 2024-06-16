@@ -4,3 +4,7 @@ export interface SendEmailRequest {
   subject: string;
   html: string;
 }
+
+export interface TestAuth {
+  testApiKey: string;
+}
