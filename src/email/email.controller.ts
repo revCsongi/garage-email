@@ -1,5 +1,5 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { SendEmailRequest } from './email.models';
+import { SendEmailRequest, TestAuth } from './email.models';
 
 @Controller('email')
 export class EmailController {
@@ -18,10 +18,10 @@ export class EmailController {
       });
   }
 
-  @Get()
-  getEmail(): any {
+  @Post('auth')
+  authenticateTest(@Body() authRequest: TestAuth): any {
     return {
-      email: 'Email'
+      isAuthenticated: authRequest.testApiKey === process.env.TEST_API_KEY
     }
   }
 }
